@@ -1,0 +1,72 @@
+object Form1: TForm1
+  Left = 813
+  Height = 662
+  Top = 114
+  Width = 1095
+  Caption = 'Form1'
+  ClientHeight = 662
+  ClientWidth = 1095
+  OnCreate = FormCreate
+  LCLVersion = '1.6.4.0'
+  object Image1: TImage
+    Left = 24
+    Height = 600
+    Top = 3
+    Width = 900
+    OnMouseMove = Image1MouseMove
+  end
+  object Button1: TButton
+    Left = 24
+    Height = 25
+    Top = 617
+    Width = 900
+    Caption = 'Button1'
+    OnClick = Button1Click
+    TabOrder = 0
+  end
+  object Label1: TLabel
+    Left = 944
+    Height = 15
+    Top = 40
+    Width = 34
+    Caption = 'Label1'
+    Font.CharSet = SHIFTJIS_CHARSET
+    Font.Color = clHighlight
+    ParentColor = False
+    ParentFont = False
+  end
+  object Label6: TLabel
+    Left = 944
+    Height = 15
+    Top = 128
+    Width = 34
+    Caption = 'Label6'
+    Font.Color = clRed
+    ParentColor = False
+    ParentFont = False
+  end
+  object Timer1: TTimer
+    Enabled = False
+    OnTimer = Timer1Timer
+    left = 952
+    top = 296
+  end
+  object Timer2: TTimer
+    Enabled = False
+    OnTimer = Timer2Timer
+    left = 952
+    top = 352
+  end
+  object Timer3: TTimer
+    Enabled = False
+    OnTimer = Timer3Timer
+    left = 952
+    top = 416
+  end
+  object Timer4: TTimer
+    Interval = 1
+    OnTimer = Timer4Timer
+    left = 952
+    top = 472
+  end
+end
