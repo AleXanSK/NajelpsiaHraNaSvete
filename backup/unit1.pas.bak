@@ -307,16 +307,17 @@ vyhercovia[i].datum:=     Copy(pom_s,1,Length(pom_s));
 
 
 end;
+CloseFile(subor);
 najvyssieScore:=vyhercovia[1].skore;
 Label6.caption:='Najvyssie score je '+IntToStr(najvyssieScore);
 griduss;
 //Koniec kontorly
-IF celkoveScore>najvyssieScore THEN
-  begin
-  najvyssieScore:=celkoveScore;
-  Label6.caption:='Najvyssie score je '+IntToStr(najvyssieScore);
-  halloffame(najvyssieScore); //zapise vyhercu
-  end;
+{
+ IF celkoveScore>najvyssieScore THEN
+   begin
+
+   end;
+}
 
   Image1.canvas.Brush.color:=clYellow;
   Image1.canvas.fillrect(clientRect);
@@ -326,7 +327,12 @@ IF celkoveScore>najvyssieScore THEN
   Timer4.enabled:=false;
 
   hraBezi:=false;
-
+IF celkoveScore>najvyssieScore THEN
+  begin
+  halloffame(celkoveScore); //zapise vyhercu
+  najvyssieScore:=celkoveScore;
+  Label6.caption:='Najvyssie score je '+IntToStr(najvyssieScore);
+  end;
 
   score1:=20;
   score2:=25;
@@ -337,7 +343,6 @@ IF celkoveScore>najvyssieScore THEN
   Timer3.Interval:=1000-score3;
   Image1.canvas.Brush.color:=clBlack;
   Image1.canvas.Rectangle(0,550,900,600);
-
 
 end;
 procedure TForm1.halloffame(skore_p:integer);
@@ -405,12 +410,12 @@ vyhercovia_length:=10;
 
 
 
-gridus;
+griduss;
 
 
 end;
 
-procedure TForm1.griduss
+procedure TForm1.griduss;
 var i:integer;
 begin
   for i:=1 to 10 do begin

@@ -307,16 +307,17 @@ vyhercovia[i].datum:=     Copy(pom_s,1,Length(pom_s));
 
 
 end;
+CloseFile(subor);
 najvyssieScore:=vyhercovia[1].skore;
 Label6.caption:='Najvyssie score je '+IntToStr(najvyssieScore);
 griduss;
 //Koniec kontorly
-IF celkoveScore>najvyssieScore THEN
-  begin
-  najvyssieScore:=celkoveScore;
-  Label6.caption:='Najvyssie score je '+IntToStr(najvyssieScore);
-  halloffame(najvyssieScore); //zapise vyhercu
-  end;
+{
+ IF celkoveScore>najvyssieScore THEN
+   begin
+
+   end;
+}
 
   Image1.canvas.Brush.color:=clYellow;
   Image1.canvas.fillrect(clientRect);
@@ -326,7 +327,12 @@ IF celkoveScore>najvyssieScore THEN
   Timer4.enabled:=false;
 
   hraBezi:=false;
-
+IF celkoveScore>najvyssieScore THEN
+  begin
+  halloffame(celkoveScore); //zapise vyhercu
+  najvyssieScore:=celkoveScore;
+  Label6.caption:='Najvyssie score je '+IntToStr(najvyssieScore);
+  end;
 
   score1:=20;
   score2:=25;
@@ -338,7 +344,6 @@ IF celkoveScore>najvyssieScore THEN
   Image1.canvas.Brush.color:=clBlack;
   Image1.canvas.Rectangle(0,550,900,600);
 
-
 end;
 procedure TForm1.halloffame(skore_p:integer);
 var
@@ -347,9 +352,9 @@ var
   subor:textfile;
 begin
   InputQuery('VYHERCA', 'Prekonali ste posledného najlepšieho hráča a zalúžite si umiestenenie v Hall of Fame. Prosím povedzte nám svoje meno:', UserString);
-  if Length(userstring)>10 then InputQuery('VYHERCA', 'Meno iba max 10 znakov', UserString);
+  if Length(userstring)>10 then InputQuery('VYHERCA', 'Meno iba max 10 znakov a bez diakritiky', UserString);
   if Length(userstring)>10 then InputQuery('VYHERCA', 'Neštvi ma, ešte raz a stratíš svoj progres', UserString);
-  if Length(userstring)>10 then InputQuery('VYHERCA', 'Posledne varovanie', UserString);
+  if Length(userstring)>10 then InputQuery('VYHERCA', 'Posledne varovanie(max 10, bez diaktiritky)', UserString);
   if Length(userstring)>10 then begin ShowMessage('Ty si to chcel'); halt; end;
   meno_p:=userstring;
   InputQuery('VYHERCA', 'A trieda?', UserString);
